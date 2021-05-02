@@ -1,0 +1,46 @@
+<div class="card mb-4">
+  <div class="card-header">
+    <i class="fas fa-users mr-1"></i>
+    Edit SPP
+  </div>
+  <div class="card-body">
+    <form action="<%= baseURL() %>/spp/edit" method="POST">
+      <input type="hidden" name="id_spp" value="<%= spp.id_spp %>">
+      <div class="form-group">
+        <label for="">Pilih Siswa</label>
+        <select name="id_siswa_spp" id="" class="form-control">
+          <option value="">-Pilih-</option>
+          <% siswa.forEach(item => { %>
+            <% if(item.id_siswa==spp.id_siswa_spp){ %> 
+              <option selected value="<%= item.id_siswa %>"><%= item.nama_siswa %></option>
+            <% } else{ %>
+              <option value="<%= item.id_siswa %>"><%= item.nama_siswa %></option>
+            <% } %> 
+          <% }) %> 
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="">Pilih Bulan Pembayaran</label>
+        <select name="bulan_spp" id="" class="form-control">
+          <option value="">-Pilih-</option>
+          <% for(var bul= 1; bul<= 12; bul++){ %>
+            <% if(bul==spp.bulan_spp){ %> 
+              <option selected value="<%= bul %>"><%= bulan(bul) %></option>
+            <% } else{ %>
+              <option value="<%= bul %>"><%= bulan(bul) %></option>
+            <% } %> 
+          <% } %> 
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="">Tahun</label>
+        <input type="text" name="tahun_spp" class="form-control" value="<%= spp.tahun_spp %>">
+      </div>
+      <div class="form-group">
+        <label for="">Nominal Bayar</label>
+        <input type="text" name="nominal_spp" class="form-control" value="<%= spp.nominal_spp %>">
+      </div>
+      <button class="btn btn-primary">Edit</button>
+    </form>
+  </div>
+</div>

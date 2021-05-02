@@ -1,0 +1,37 @@
+<div class="card mb-4">
+  <div class="card-header">
+    <i class="fas fa-users mr-1"></i>
+    Tambah SPP
+  </div>
+  <div class="card-body">
+    <form action="<%= baseURL() %>/spp/simpan" method="POST">
+      <div class="form-group">
+        <label for="">Pilih Siswa</label>
+        <select name="id_siswa_spp" id="" class="form-control">
+          <option value="">-Pilih-</option>
+          <% siswa.forEach(item => { %>
+            <option value="<%= item.id_siswa %>"><%= item.nama_siswa %></option>
+          <% }) %> 
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="">Pilih Bulan Pembayaran</label>
+        <select name="bulan_spp" id="" class="form-control">
+          <option value="">-Pilih-</option>
+          <% for(var bul= 1; bul<= 12; bul++){ %>
+            <option value="<%= bul %>"><%= bulan(bul) %></option>
+          <% } %> 
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="">Tahun</label>
+        <input type="text" name="tahun_spp" class="form-control" value="<%= tahun() %>">
+      </div>
+      <div class="form-group">
+        <label for="">Nominal Bayar</label>
+        <input type="text" name="nominal_spp" class="form-control" value="">
+      </div>
+      <button class="btn btn-primary">Simpan</button>
+    </form>
+  </div>
+</div>

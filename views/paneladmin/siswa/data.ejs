@@ -1,0 +1,49 @@
+<div class="card mb-4">
+  <div class="card-header">
+    <i class="fas fa-users mr-1"></i>
+    Data Siswa
+  </div>
+  <div class="card-body">
+   <div class="table-responsive">
+    <table class="table table-bordered table-hover" id="">
+      <thead>
+        <th width="5%">No</th>
+        <th>Nama</th>
+        <th>Kelas</th>
+        <th width="15%">Aksi</th>
+      </thead>
+      <tbody>
+        <% var no= 1; siswa.forEach(function(r){ %>
+        <tr>
+          <td><%= no %></td>
+          <td><%= r.nama_siswa %></td>
+          <td><%= r.kelas_siswa %></td>
+          <td>
+            <a href="<%= baseURL() %>/paneladmin/editsiswa/<%= r.id_siswa %>" class="btn btn-warning btn-sm">Edit</a>
+            <a href="javascript:;" onclick="hapus('<%= r.id_siswa %>','<%= r.nama_siswa %>')" class="btn btn-danger btn-sm">Hapus</a>
+          </td>
+        </tr>
+        <% no++; }) %> 
+      </tbody>
+    </table>
+   </div>
+  </div>
+</div>
+<script>
+  function hapus(id,ket){
+    var conf= confirm("Hapus data "+ket+"?");
+    if(conf==true){
+      $.ajax({
+        method : "GET",
+        dataType: 'json',
+        url : "<%= baseURL() %>/siswa/hapus/"+id,
+        success : function(response){
+          window.location.reload();
+        }
+      })
+    }
+    else{
+      return false;
+    }
+  }
+</script>

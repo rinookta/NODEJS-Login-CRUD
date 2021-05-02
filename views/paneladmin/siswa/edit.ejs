@@ -1,0 +1,21 @@
+<% var data= siswa; %>
+<div class="card mb-4">
+  <div class="card-header">
+    <i class="fas fa-users mr-1"></i>
+    Edit Siswa
+  </div>
+  <div class="card-body">
+    <form action="<%= baseURL() %>/siswa/edit" method="POST">
+      <input type="hidden" name="id_siswa" value="<%= data.id_siswa %>">
+      <div class="form-group">
+        <label for="">Nama Siswa</label>
+        <input type="text" class="form-control" name="nama_siswa" value="<%= data.nama_siswa %>">
+      </div>
+      <div class="form-group">
+        <label for="">Kelas</label>
+        <input type="text" class="form-control" name="kelas_siswa" value="<%= data.kelas_siswa %>">
+      </div>
+      <button class="btn btn-primary">Edit</button>
+    </form>
+  </div>
+</div>

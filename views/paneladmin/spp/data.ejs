@@ -1,0 +1,51 @@
+<div class="card mb-4">
+  <div class="card-header">
+    <i class="fas fa-book mr-1"></i>
+    Data SPP
+  </div>
+  <div class="card-body">
+   <div class="table-responsive">
+    <table class="table table-bordered table-hover" id="">
+      <thead>
+        <th width="5%">No</th>
+        <th>Nama</th>
+        <th>Bulan Tahun</th>
+        <th>Nominal</th>
+        <th width="15%">Aksi</th>
+      </thead>
+      <tbody>
+        <% var no= 1; spp.forEach(function(r){ %>
+        <tr>
+          <td><%= no %></td>
+          <td><%= r.nama_siswa %></td>
+          <td><%= bulan(r.bulan_spp) %> <%= r.tahun_spp %></td>
+          <td><%= ribuan(r.nominal_spp) %></td>
+          <td>
+            <a href="<%= baseURL() %>/paneladmin/editspp/<%= r.id_spp %>" class="btn btn-warning btn-sm">Edit</a>
+            <a href="javascript:;" onclick="hapus('<%= r.id_spp %>','<%= r.id_spp %>')" class="btn btn-danger btn-sm">Hapus</a>
+          </td>
+        </tr>
+        <% no++; }) %> 
+      </tbody>
+    </table>
+   </div>
+  </div>
+</div>
+<script>
+  function hapus(id,ket){
+    var conf= confirm("Hapus data "+ket+"?");
+    if(conf==true){
+      $.ajax({
+        method : "GET",
+        dataType: 'json',
+        url : "<%= baseURL() %>/spp/hapus/"+id,
+        success : function(response){
+          window.location.reload();
+        }
+      })
+    }
+    else{
+      return false;
+    }
+  }
+</script>

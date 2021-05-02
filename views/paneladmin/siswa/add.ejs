@@ -1,0 +1,19 @@
+<div class="card mb-4">
+  <div class="card-header">
+    <i class="fas fa-users mr-1"></i>
+    Tambah Siswa
+  </div>
+  <div class="card-body">
+    <form action="<%= baseURL() %>/siswa/simpan" method="POST">
+      <div class="form-group">
+        <label for="">Nama Siswa</label>
+        <input type="text" class="form-control" name="nama_siswa">
+      </div>
+      <div class="form-group">
+        <label for="">Kelas</label>
+        <input type="text" class="form-control" name="kelas_siswa">
+      </div>
+      <button class="btn btn-primary">Simpan</button>
+    </form>
+  </div>
+</div>
